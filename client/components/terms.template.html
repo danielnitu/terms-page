@@ -1,0 +1,37 @@
+<h2 class="main-title">{{ terms.data.heading }}</h2>
+<p class="terms-bold">{{ terms.data['intro_content'] }}</p>
+<p class="terms-bold">{{ terms.data.date }}</p>
+
+<div class="subcontent" ng-repeat="content in terms.data.subcontent">
+  <p ng-bind-html="content">{{ content }}</p>
+</div>
+
+<div class="paragraphs" ng-repeat="paragraph in terms.paragraphs">
+
+  <div ng-if="paragraph.content">
+    <h3 class="sub-title">{{ paragraph.heading }}</h3>
+
+    <ul ng-repeat="content in paragraph.content">
+      <!-- 'content' array has only strings -->
+      <li ng-if="terms.isString(content)" ng-bind-html="content">{{ content }}</li>
+
+      <!-- 'content' array has objects -->
+      <div ng-if="!terms.isString(content)" ng-repeat="contentMain in content track by $index">
+        <li ng-if="terms.isString(contentMain)">{{ contentMain }}</li>
+
+        <!-- objects in 'content' array have other arrays -->
+        <ul class="sub-list" ng-if="!terms.isString(contentMain)" ng-repeat="subcontent in contentMain track by $index">
+          <li>{{ subcontent }}</li>
+        </ul>
+
+      </div>
+    </ul>
+  </div>
+
+  <!-- Corner case; paragraph has no 'content' property -->
+  <div ng-if="!paragraph.content">
+    <h3 class="sub-title">{{ paragraph.heading }}</h3>
+    <p ng-repeat="(key, value) in paragraph" ng-if="key !== 'heading'" ng-bind-html="value">{{ value }}</p>
+  </div>
+
+</div>

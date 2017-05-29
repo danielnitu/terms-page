@@ -1,0 +1,40 @@
+body {
+  padding: 0 10%;
+}
+
+a {
+  text-decoration: none;
+}
+
+b {
+  color: #666;
+}
+
+p {
+  padding: 10px 0;
+}
+
+.main-title {
+  font-size: 30px;
+  color: #7d378b;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+.sub-title {
+  font-size: 26px;
+  color: #7d378b;
+  font-family: 'Lato';
+  font-weight: 400;
+}
+
+.terms-bold {
+  font-size: 16px;
+  color: #666;
+  font-family: verdana;
+  font-weight: bold;
+}
+
+.sub-list > li {
+  padding-top: 10px;
+}
